@@ -12,82 +12,74 @@ Reusable multi-stack SaaS template with SvelteKit frontend, Python FastAPI backe
 
 ## Quick Start
 
-### 1. Clone and Setup
+### 1. Clone Template via GitHub
 
-\`\`\`bash
+**Recommended**: Use GitHub's "Use this template" button to create a clean copy, or clone directly:
+
+```bash
 # Clone template for new project
-git clone <this-repo> my-new-saas
+git clone https://github.com/yourusername/project-tempalte my-new-saas
 cd my-new-saas
 
-# Remove git history (start fresh)
+# If cloning (not using template feature), remove git history
 rm -rf .git
 git init
-\`\`\`
+```
 
 ### 2. Initialize Applications
 
-\`\`\`bash
-# Frontend
+The template includes skeleton files. Initialize each stack:
+
+```bash
+# Frontend (SvelteKit)
 cd frontend
 npx sv create .
 npm install
 cd ..
 
-# Backend
+# Backend (Python/FastAPI)
 cd backend
-# requirements.txt already exists
+# requirements.txt already exists, ready to use
 cd ..
 
-# Admin
+# Admin (Laravel)
 cd admin
 composer create-project laravel/laravel:^12.0 .
 cd ..
-\`\`\`
+```
 
 ### 3. Configure Environment
 
-\`\`\`bash
-# Copy and customize
+```bash
+# Copy example environment file
 cp .env.example .env
 
 # Edit .env with your database credentials and app settings
-\`\`\`
+nano .env
+```
 
 ### 4. Start Docker Environment
 
-\`\`\`bash
+```bash
 # Build and start all services
 docker compose up -d --build
+
+# Wait for services to be healthy (~30 seconds)
 
 # Setup Laravel
 docker exec -it saas_admin php artisan key:generate
 docker exec -it saas_admin php artisan migrate
 
-# Verify services
+# Verify all services are running
 docker compose ps
-\`\`\`
+```
 
 ### 5. Access Services
 
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:8000/docs
-- Admin Panel: http://localhost:8080
-- PostgreSQL: localhost:5432
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:8000/docs
+- **Admin Panel**: http://localhost:8080
+- **PostgreSQL**: localhost:5432
+- **Redis**: localhost:6379
 
 ## Project Structure
-
-\`\`\`
-.
-├── docker-compose.yml      # All services orchestration
-├── .env                    # Environment variables
-├── docker/                 # Dockerfiles for each service
-│   ├── frontend.Dockerfile
-│   ├── backend.Dockerfile
-│   └── admin.Dockerfile
-├── nginx/
-│   └── nginx.conf         # Reverse proxy config
-├── frontend/              # SvelteKit app
-├── backend/               # FastAPI app
-├── admin/                 # Laravel app
-└── shared/                # Shared JSON configs
-    └── json/
