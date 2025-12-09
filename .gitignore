@@ -1,0 +1,120 @@
+# ============================================
+# Docker & Environment
+# ============================================
+.env.local
+.env.*.local
+docker-compose.override.yml
+*.log
+
+# ============================================
+# Frontend (SvelteKit/Node)
+# ============================================
+frontend/node_modules/
+frontend/.svelte-kit/
+frontend/build/
+frontend/.vercel/
+frontend/.netlify/
+frontend/dist/
+frontend/.output/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+frontend/package-lock.json
+frontend/pnpm-lock.yaml
+frontend/yarn.lock
+
+# ============================================
+# Backend (Python/FastAPI)
+# ============================================
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.Python
+backend/venv/
+backend/env/
+backend/.venv/
+backend/pip-log.txt
+backend/pip-delete-this-directory.txt
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+backend/*.egg-info/
+backend/dist/
+backend/build/
+backend/.mypy_cache/
+backend/.ruff_cache/
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# ============================================
+# Admin (Laravel/PHP)
+# ============================================
+admin/vendor/
+admin/node_modules/
+admin/.env
+admin/.env.*
+!admin/.env.example
+admin/storage/*.key
+admin/.phpunit.result.cache
+admin/Homestead.json
+admin/Homestead.yaml
+admin/npm-debug.log
+admin/yarn-error.log
+admin/bootstrap/cache/*.php
+admin/storage/framework/cache/*
+admin/storage/framework/sessions/*
+admin/storage/framework/views/*
+admin/storage/logs/*
+!admin/storage/.gitkeep
+!admin/storage/framework/.gitkeep
+!admin/storage/framework/cache/.gitkeep
+!admin/storage/framework/sessions/.gitkeep
+!admin/storage/framework/views/.gitkeep
+!admin/storage/logs/.gitkeep
+admin/public/storage
+admin/public/hot
+admin/auth.json
+
+# ============================================
+# Database & Data
+# ============================================
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+postgres_data/
+backups/
+dumps/
+
+# ============================================
+# IDE & Editor
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ============================================
+# OS
+# ============================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Desktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# Temporary & Cache
+# ============================================
+*.tmp
+*.temp
+*.cache
+.sass-cache/
