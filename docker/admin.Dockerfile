@@ -20,18 +20,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copy composer files first for better caching
-COPY admin/composer.json admin/composer.lock* ./
-RUN composer install --no-scripts --no-autoloader --prefer-dist || true
-
-# Copy application
+# Copy application first
 COPY admin/ .
 
-# Generate autoload files
-RUN composer dump-autoload --optimize
+# Install composer dependencies INSIDE the container
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache || true
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache 2>/dev/null || true
 
 EXPOSE 8080
 
